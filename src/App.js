@@ -1,23 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+
+import { Person } from './domain/domain';
+import ImcCalculatorService from './domain/services';
+
+function calculate() {
+  const heightElem = document.querySelector('#altura');
+  const weightElem = document.querySelector('#peso');
+
+  var person = new Person(
+    parseFloat(heightElem.value),
+    parseFloat(weightElem.value)
+  );
+
+  console.log(person);
+
+  const svc = new ImcCalculatorService();
+  svc.calculateImc(person.asJson());
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="form">
+            <div className="row">
+                <label>Altura</label>
+                <input id="altura" placeholder="digite sua altura..." />
+            </div>
+            <div className="row">
+                <label>Peso</label>
+                <input id="peso" placeholder="digite seu peso..." />
+            </div>
+            <div className="row">
+                <button 
+                    type="button"
+                    id="main-action"
+                    onClick={calculate}
+                >
+                    Calcular...
+                </button>
+            </div>
+        </div>
     </div>
   );
 }
