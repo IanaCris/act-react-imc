@@ -1,14 +1,16 @@
 
-import { useState } from "react";
+import { useInput } from "../hooks/useInput.hook";
 
 export default function ImcForm({ onSubmit, person }) {
 
-    const [height, setHeight] = useState(0.00);
-    const [weight, setWeight] = useState(0.00);
+    const [height, hProps, resetHeight] = useInput(0.00);
+    const [weight, wProps, resetWeight] = useInput(0.00);
 
     const submit = (evt) => {
         evt.preventDefault();
         onSubmit(height, weight);
+        resetHeight();
+        resetWeight();
     }
 
     return (
@@ -17,20 +19,14 @@ export default function ImcForm({ onSubmit, person }) {
                 <label>Altura</label>
                 <input id="altura"
                     placeholder="digite sua altura..."
-                    value={height}
-                    onChange={e => {
-                        setHeight(e.target.value)
-                    }}
+                    { ...hProps }
                 />
             </div>
             <div className="row">
                 <label>Peso</label>
                 <input id="peso"
                     placeholder="digite seu peso..."
-                    value={weight}
-                    onChange={e => {
-                        setWeight(e.target.value)
-                    }}
+                    { ...wProps }
                 />
             </div>
             <div className="row">
