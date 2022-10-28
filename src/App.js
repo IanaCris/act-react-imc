@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import './App.css';
 
@@ -8,16 +8,13 @@ import ImcCalculatorService from './domain/services';
 
 function App() {
   const [person, setPerson] = useState();
-
-  const heightElem = useRef();
-  const weightElem = useRef();
+  const [height, setHeight] = useState(0.00);
+  const [weight, setWeight] = useState(0.00);
 
   function calculate() {
-    
-  
     var person = new Person(
-      parseFloat(heightElem.current.value),
-      parseFloat(weightElem.current.value)
+      parseFloat(height),
+      parseFloat(weight)
     );
   
     console.log(person);
@@ -35,14 +32,20 @@ function App() {
                 <label>Altura</label>
                 <input id="altura" 
                   placeholder="digite sua altura..." 
-                  ref={heightElem}
+                  value={height}
+                  onChange={e => {
+                    setHeight(e.target.value)
+                  }}
                 />
             </div>
             <div className="row">
                 <label>Peso</label>
                 <input id="peso" 
                   placeholder="digite seu peso..." 
-                  ref={weightElem}
+                  value={weight}
+                  onChange={e => {
+                    setWeight(e.target.value)
+                  }}
                 />
             </div>
             <div className="row">
