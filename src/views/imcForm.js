@@ -1,8 +1,9 @@
-
+import { useContext } from "react"
+import { PersonContext } from "../contexts/PersonContextProvider";
 import { useInput } from "../hooks/useInput.hook";
 
-export default function ImcForm({ onSubmit, person }) {
-
+export default function ImcForm({ onSubmit }) {
+    const { person } = useContext(PersonContext);
     const [height, hProps, resetHeight] = useInput(0.00);
     const [weight, wProps, resetWeight] = useInput(0.00);
 
@@ -19,14 +20,14 @@ export default function ImcForm({ onSubmit, person }) {
                 <label>Altura</label>
                 <input id="altura"
                     placeholder="digite sua altura..."
-                    { ...hProps }
+                    {...hProps}
                 />
             </div>
             <div className="row">
                 <label>Peso</label>
                 <input id="peso"
                     placeholder="digite seu peso..."
-                    { ...wProps }
+                    {...wProps}
                 />
             </div>
             <div className="row">
@@ -37,6 +38,8 @@ export default function ImcForm({ onSubmit, person }) {
                     Calcular...
                 </button>
             </div>
+            <hr />
+            <span>{JSON.stringify(person)}</span>
         </form>
     );
 }

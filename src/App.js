@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
 import './App.css';
 
@@ -7,8 +7,10 @@ import ImcView from './views/imcView';
 import { Person } from './domain/domain';
 import ImcCalculatorService from './domain/services';
 
+import { PersonContext } from './contexts/PersonContextProvider';
+
 function App() {
-  const [person, setPerson] = useState();
+  const { setPerson } = useContext(PersonContext);
 
   function calculate(height, weight) {
     var person = new Person(
@@ -26,9 +28,9 @@ function App() {
 
   return (
     <div className="container">
-      <ImcForm onSubmit={calculate} person={person} />
+      <ImcForm onSubmit={calculate} />
       <hr />
-      <ImcView person={person} />
+      <ImcView />
     </div>
   );
 }

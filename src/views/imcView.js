@@ -1,15 +1,20 @@
-function translateImcToText(imcPerson) {
-    return imcPerson.imc + " - [" + imcPerson.imcDescription + "]";
-}
+import { useContext } from "react";
+import { PersonContext }  from "../contexts/PersonContextProvider";
 
-export default function imcView(props) {
-    if (props.person === null || props.person === undefined)
+export default function ImcView() {
+    const { person } = useContext(PersonContext);
+
+    function translateImcToText(imcPerson) {
+        return imcPerson.imc + " - [" + imcPerson.imcDescription + "]";
+    }
+
+    if (person === null || person === undefined || person.imc === null || person.imc === undefined)
             return <div class="result"></div>;
 
     return (
         <div class="result">
             <span>Seu IMC &eacute;: 
-                <label id="imc">{translateImcToText(props.person)}</label>
+                <label id="imc">{translateImcToText(person)}</label>
             </span>
         </div>
     );
