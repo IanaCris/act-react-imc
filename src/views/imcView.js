@@ -9,10 +9,10 @@ export default function ImcView() {
     }
 
     if (person === null || person === undefined || person.imc === null || person.imc === undefined)
-            return <div class="result"></div>;
+            return <div className="result"></div>;
 
     return (
-        <div class="result">
+        <div className="result">
             <span>Seu IMC &eacute;: 
                 <label id="imc">{translateImcToText(person)}</label>
             </span>

@@ -4,6 +4,7 @@ import './App.css';
 
 import ImcForm from './views/imcForm';
 import ImcView from './views/imcView';
+import ImcTableView from './views/imcTable';
 import { Person } from './domain/domain';
 import ImcCalculatorService from './domain/services';
 
@@ -31,6 +32,8 @@ function App() {
       <ImcForm onSubmit={calculate} />
       <hr />
       <ImcView />
+      <hr />
+      <ImcTableView />
     </div>
   );
 }
