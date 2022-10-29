@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+#Atividade da disciplina Web Development
+
+Integrantes do grupo:
+- Iana Lima
+- Sara Pereira
+- Wagner Garnizet
+- Bruno Souza
+- Matheus de Moraes
+- Emerson Farias
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
