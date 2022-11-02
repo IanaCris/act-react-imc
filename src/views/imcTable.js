@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImcCalculatorService from "../domain/services";
 
 export default function ImcTableView() {
@@ -13,8 +13,10 @@ export default function ImcTableView() {
         return res;
     }
 
-
-    listTable();
+    useEffect(() => {
+        listTable();
+    });
+   
 
     return (<table>
         { Object.values(list).map((resultImc, index) => <tr key={index}><td>{
